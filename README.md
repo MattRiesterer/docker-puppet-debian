@@ -5,7 +5,7 @@ Simple Dockerfile based on Debian Jessie with puppet agent installed the way pup
 
 > docker pull mattriesterer/docker-puppet-debian
 
-## Developing puppet stuff
+## Puppet Development
 
 ### Directory Structure
 Later on you will mount the directory you develop modules in to the docker

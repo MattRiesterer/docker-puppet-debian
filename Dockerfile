@@ -4,16 +4,22 @@ MAINTAINER Matthias Riesterer <matthias.riesterer@gmail.com>
 
 WORKDIR /root
 
-ADD https://apt.puppetlabs.com/puppetlabs-release-jessie.deb /root/
+ENV PUPPET_PACKAGE puppetlabs-release-pc1-jessie.deb
 
-RUN dpkg -i puppetlabs-release-jessie.deb
+ADD https://apt.puppetlabs.com/$PUPPET_PACKAGE /root/
 
-RUN apt-get -y update \
+RUN dpkg -i $PUPPET_PACKAGE
+
+RUN rm $PUPPET_PACKAGE
+
+RUN apt-get clean \
+    && apt-get -y update \
     && apt-get install -y puppet \
       less \
       vim \
       git
 
+# clean apt to reduce image size
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN gem install r10k

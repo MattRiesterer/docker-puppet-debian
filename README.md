@@ -1,5 +1,5 @@
 # docker puppet debian
-Simple Dockerfile based on Debian Jessie with puppet agent installed the way puppetlabs describes it on https://docs.puppetlabs.com/puppet/latest/reference/install_linux.html
+Simple Dockerfile based on Debian Jessie with puppet 4.2.3 installed via ruby gem.
 
 ## Usage
 

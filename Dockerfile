@@ -9,7 +9,8 @@ RUN apt-get clean \
     && apt-get install -y ruby \
       less \
       vim \
-      git
+      git \
+      lsb-release
 
 # clean apt to reduce image size
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

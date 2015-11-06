@@ -82,6 +82,13 @@ to run puppet looks like this:
 
 > docker:~/src/$ puppet apply --modulepath=external_modules site.pp
 
+## Running puppet with hiera
+
+Mount hiera data in the docker container the same way you mounted the manifests and
+run 
+
+> puppet apply --modulepath=external_modules/ --hiera_config /root/hiera.yaml site.pp
+
 ## Checking code quality
 
 puppet-lint is provided with this image and puppet parser validate is provided by puppet.

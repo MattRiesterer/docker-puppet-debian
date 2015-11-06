@@ -10,7 +10,8 @@ RUN apt-get clean \
       less \
       vim \
       git \
-      lsb-release
+      lsb-release \
+      libaugeas-ruby
 
 # clean apt to reduce image size
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

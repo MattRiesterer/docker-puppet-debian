@@ -1,0 +1,13 @@
+---
+:backends:
+  - yaml
+
+# here we need something general e.g. including everything or something
+# that mimics behavior of puppet-master/hiera.yaml
+:hierarchy:
+  - "60_stage_default"
+
+# that's the mountpoint for hiera data
+# docker -run -v hostHiearData:/root/hiera
+:yaml:
+  :datadir: '/root/hiera/'

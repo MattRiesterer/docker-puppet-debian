@@ -21,3 +21,5 @@ RUN gem install r10k
 RUN gem install puppet-lint
 
 COPY gitconfig /root/.gitconfig
+
+COPY hiera.yaml /root/hiera.yaml

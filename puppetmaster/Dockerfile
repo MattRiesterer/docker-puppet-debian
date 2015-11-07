@@ -22,16 +22,19 @@ RUN gem install puppet-lint
 
 COPY gitconfig /root/.gitconfig
 
-ADD puppet.conf /etc/puppet/puppet.conf
+ADD puppet.conf /etc/puppetlabs/puppet/puppet.conf
 
-VOLUME ["/opt/puppet"]
+#VOLUME ["/opt/puppet"]
 
 #RUN cp -rf /etc/puppet/* /opt/puppet/
 
-VOLUME ["/opt/varpuppet/lib/puppet"]
+#VOLUME ["/opt/varpuppet/lib/puppet"]
 
 #RUN cp -rf /var/lib/puppet/* /opt/varpuppet/lib/puppet/
+RUN puppet resource group puppet ensure=present
+
+RUN puppet resource user puppet ensure=present gid=puppet shell='/bin/false'
 
 EXPOSE 8140
 
-# ENTRYPOINT [ "/usr/bin/puppet", "master", "--no-daemonize", "--verbose" ]
+ENTRYPOINT [ "puppet", "master", "--no-daemonize", "--verbose" ]

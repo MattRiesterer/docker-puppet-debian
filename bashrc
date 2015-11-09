@@ -17,3 +17,6 @@ alias l='ls $LS_OPTIONS -lA'
 # alias cp='cp -i'
 # alias mv='mv -i'
 
+# ensure helper scripts can be accessed
+export PATH="$PATH:/root/bin"
+

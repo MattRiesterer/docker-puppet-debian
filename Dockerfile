@@ -20,6 +20,8 @@ RUN gem install puppet
 RUN gem install r10k
 RUN gem install puppet-lint
  
+COPY bin /root/bin
+
 COPY bashrc /root/.bashrc
 
 COPY gitconfig /root/.gitconfig

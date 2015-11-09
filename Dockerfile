@@ -19,6 +19,8 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN gem install puppet
 RUN gem install r10k
 RUN gem install puppet-lint
+ 
+COPY bashrc /root/.bashrc
 
 COPY gitconfig /root/.gitconfig
 

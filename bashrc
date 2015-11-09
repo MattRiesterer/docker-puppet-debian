@@ -20,3 +20,19 @@ alias l='ls $LS_OPTIONS -lA'
 # ensure helper scripts can be accessed
 export PATH="$PATH:/root/bin"
 
+# ensure package info is current so that puppet can find
+# packages to be installed
+if [ "$(ls -A /var/lib/apt/lists >/dev/null 2>&1)" == "" ]; then
+    apt-get update
+fi
+
+# ensure SSH agent is running and keys are loaded when
+# .ssh folder is present
+if [ -d /root/.ssh ]; then
+    SSH_ENV="/root/.ssh/environment"
+    /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
+    chmod 600 "${SSH_ENV}"
+    . "${SSH_ENV}"
+    /usr/bin/ssh-add;
+fi
+

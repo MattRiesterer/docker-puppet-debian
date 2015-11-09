@@ -63,15 +63,6 @@ root@07e854d09c79:~#
 As your puppet-dev directory is mounted to the container by passing  ```-v```, all changes
 done on your host are immediately available on the container (and vice versa).
 
-To keep the image size small all cached information from apt is removed when the
-Docker image is build. To regain this information and to not let your puppet scripts
-fail in case they install additional packages, run the following command:
-
-```
-root@07e854d09c79:~# setup.sh
-```
-
-This will refresh the cache for apt.
 
 ### Include access keys in container
 The first thing you'll probably do is to run 'r10k' which fetches required modules
@@ -82,19 +73,9 @@ your personal keys to the container as well
 host:~/puppet-dev/$ docker run -it --rm -v $(pwd):/root/src -v ~/.ssh:/root/.ssh mattriesterer/docker-puppet-debian
 ```
 
-When you run `setup.sh` as described above and mount the .ssh folder to `/root/.ssh`
-as in the example above, the setup script will take care of the following steps. In
-case you want to run them manually or that your key file is not named as one of the
-defaults that `ssh-add` will load when no specific key file is specified run the
-following commands:
-
-Make the ssh-agent available
-
-```
-docker:~/$ eval $(ssh-agent)
-```
-
-and add your key
+The container will automatically load your keys with `ssh-add` so on login you will
+be asked for your key file password. In case your key is not in the list of default
+keys loaded by `ssh-add` when called without arguments you can load your key manually:
 
 ```
 docker:~/$ ssh-add .ssh/YOUR-KEY

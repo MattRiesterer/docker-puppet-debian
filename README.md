@@ -63,7 +63,6 @@ root@07e854d09c79:~#
 As your puppet-dev directory is mounted to the container by passing  ```-v```, all changes
 done on your host are immediately available on the container (and vice versa).
 
-
 ### Include access keys in container
 The first thing you'll probably do is to run 'r10k' which fetches required modules
 from source repositories. If keys are required to access source repositories, mount

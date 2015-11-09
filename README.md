@@ -68,7 +68,7 @@ Docker image is build. To regain this information and to not let your puppet scr
 fail in case they install additional packages, run the following command:
 
 ```
-root@07e854d09c79:~# setup.sh
+docker:~# bin/setup.sh
 ```
 
 This will refresh the cache for apt.
